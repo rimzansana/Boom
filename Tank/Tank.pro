@@ -25,7 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    tank.cpp
+    tank.cpp \
+    missile.cpp
 
 HEADERS += \
-    tank.h
+    tank.h \
+    missile.h
