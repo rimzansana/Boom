@@ -50,8 +50,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Tank/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../Tank/main.cpp \
+		../Tank/tank.cpp 
+OBJECTS       = main.o \
+		tank.o
 DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/device_config.prf \
@@ -210,6 +212,7 @@ DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		../Tank/.qmake.stash \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -236,7 +239,8 @@ DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf \
-		../Tank/Tank.pro  ../Tank/main.cpp
+		../Tank/Tank.pro ../Tank/tank.h ../Tank/main.cpp \
+		../Tank/tank.cpp
 QMAKE_TARGET  = Tank
 DESTDIR       = 
 TARGET        = Tank.app/Contents/MacOS/Tank
@@ -412,6 +416,7 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -601,6 +606,7 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -661,7 +667,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tank/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/tank.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -671,6 +678,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r Tank.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -711,8 +719,24 @@ compiler_clean: compiler_moc_predefs_clean
 ####### Compile
 
 main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../Tank/tank.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Tank/main.cpp
+
+tank.o: ../Tank/tank.cpp ../Tank/tank.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tank.o ../Tank/tank.cpp
 
 ####### Install
 

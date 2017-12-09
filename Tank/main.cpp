@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <QGraphicsScene>
-#include <QGraphicsRectItem>
+#include "tank.h"
 #include <QGraphicsView>
 
 int main(int argc, char *argv[])
@@ -13,8 +13,13 @@ int main(int argc, char *argv[])
 
     //Creating the tank
 
-    QGraphicsRectItem *tank = new QGraphicsRectItem();
+    Tank *tank = new Tank();
     tank->setRect(0,0,100,100);
+
+
+    //making the tank focusable
+    tank->setFlag(QGraphicsItem::ItemIsFocusable);
+    tank->setFocus();
 
     //add the Tank to the scene
     scene->addItem(tank);
