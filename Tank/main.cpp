@@ -20,8 +20,11 @@ int main(int argc, char *argv[])
     Tank *tank = new Tank();
     tank->setRect(0,0,100,100);
 
+    //Positioning the tank
 
-
+    int xPos = 0;
+    int yPos =250;
+    tank->setPos(xPos,yPos);
 
     //making the tank focusable
     tank->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -38,6 +41,8 @@ int main(int argc, char *argv[])
     //remove this
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+
 
 
     //Displaying the View
