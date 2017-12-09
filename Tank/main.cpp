@@ -11,10 +11,16 @@ int main(int argc, char *argv[])
 
     QGraphicsScene *scene = new QGraphicsScene();
 
+    //Setting the Sceen Size
+    scene->setSceneRect(0,0,800,600);
+
+
     //Creating the tank
 
     Tank *tank = new Tank();
     tank->setRect(0,0,100,100);
+
+
 
 
     //making the tank focusable
@@ -26,7 +32,13 @@ int main(int argc, char *argv[])
 
     //Create a view
     QGraphicsView *view = new QGraphicsView();
+    view->setFixedSize(800,600);
     view->setScene(scene);
+
+    //remove this
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
 
     //Displaying the View
     view->show();

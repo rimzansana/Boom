@@ -52,10 +52,11 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Tank/main.cpp \
 		../Tank/tank.cpp \
-		../Tank/missile.cpp 
+		../Tank/missile.cpp moc_missile.cpp
 OBJECTS       = main.o \
 		tank.o \
-		missile.o
+		missile.o \
+		moc_missile.o
 DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/device_config.prf \
@@ -704,8 +705,18 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_missile.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_missile.cpp
+moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../Tank/missile.h \
+		moc_predefs.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/missile.h -o moc_missile.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all:
@@ -718,7 +729,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -740,13 +751,24 @@ tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		../Tank/missile.h
+		../Tank/missile.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tank.o ../Tank/tank.cpp
 
 missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o missile.o ../Tank/missile.cpp
+
+moc_missile.o: moc_missile.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_missile.o moc_missile.cpp
 
 ####### Install
 

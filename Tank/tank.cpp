@@ -25,7 +25,10 @@ void Tank::keyPressEvent(QKeyEvent *event)
         //Creating a Missile if the Space is pressed
 
         Missile *missile = new Missile();
-        scene()->addItem(missile);
+
+        //setting the position of missile
+       missile->setPos(x()+70,y()+45);
+       scene()->addItem(missile);
 
 
 
