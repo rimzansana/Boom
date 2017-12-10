@@ -38,13 +38,6 @@ int main(int argc, char *argv[])
     view->setFixedSize(900,600);
     view->setScene(scene);
 
-    //remove this
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-
-
-
     //Displaying the View
     view->show();
 
