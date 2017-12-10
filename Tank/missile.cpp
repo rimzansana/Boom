@@ -27,10 +27,12 @@ void Missile::moveMissile()
 {
     setPos(x()+10,y());
 
-    if(pos().x()>800){
+    if(pos().x()>900){
         scene()->removeItem(this);
         delete this;
-        qDebug() << "Delete Bullet";
+        qDebug() <<"Bullet Deleted";
+
+
 
     }
 }

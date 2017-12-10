@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QGraphicsScene *scene = new QGraphicsScene();
 
     //Setting the Sceen Size
-    scene->setSceneRect(0,0,800,600);
+    scene->setSceneRect(0,0,900,600);
 
 
     //Creating the tank
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
     //Create a view
     QGraphicsView *view = new QGraphicsView();
-    view->setFixedSize(800,600);
+    view->setFixedSize(900,600);
     view->setScene(scene);
 
     //remove this
