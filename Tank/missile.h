@@ -2,6 +2,7 @@
 #define MISSILE_H
 #include <QGraphicsRectItem>
 #include <QObject>
+#include <QGraphicsScene>
 
 class Missile:public QObject, public QGraphicsRectItem{
     Q_OBJECT

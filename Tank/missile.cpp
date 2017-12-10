@@ -1,5 +1,6 @@
 #include "missile.h"
 #include <QTimer>
+#include <QDebug>
 
 
 
@@ -7,7 +8,7 @@ Missile::Missile()
 {
 
     //Creating the Missile
-    int x = 4;
+
     setRect(0,0,50,10);
 
     //Creating the timer
@@ -25,4 +26,11 @@ Missile::Missile()
 void Missile::moveMissile()
 {
     setPos(x()+10,y());
+
+    if(pos().x()>800){
+        scene()->removeItem(this);
+        delete this;
+        qDebug() << "Delete Bullet";
+
+    }
 }
