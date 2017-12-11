@@ -1,6 +1,6 @@
 #include "missile.h"
 #include <QTimer>
-#include <QDebug>
+
 
 
 
@@ -30,7 +30,7 @@ void Missile::moveMissile()
     if(pos().x()>900){
         scene()->removeItem(this);
         delete this;
-        qDebug() <<"Bullet Deleted";
+
 
 
 

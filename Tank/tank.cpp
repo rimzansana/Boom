@@ -2,6 +2,22 @@
 #include "missile.h"
 #include <QGraphicsScene>
 
+
+Tank::Tank()
+{
+    //Creating the tank
+
+
+    setRect(0,0,100,100);
+
+    //Positioning the tank
+
+    int xPos = 0;
+    int yPos =250;
+    setPos(xPos,yPos);
+
+}
+
 void Tank::keyPressEvent(QKeyEvent *event)
 {
 
@@ -36,11 +52,9 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
         Missile *missile = new Missile();
 
-        //setting the position of missile
+       //setting the position of missile
        missile->setPos(x()+70,y()+45);
        scene()->addItem(missile);
-
-
 
 
     }

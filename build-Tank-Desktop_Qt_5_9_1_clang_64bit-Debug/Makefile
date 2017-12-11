@@ -52,10 +52,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Tank/main.cpp \
 		../Tank/tank.cpp \
-		../Tank/missile.cpp moc_missile.cpp
+		../Tank/missile.cpp \
+		../Tank/attacker.cpp moc_missile.cpp
 OBJECTS       = main.o \
 		tank.o \
 		missile.o \
+		attacker.o \
 		moc_missile.o
 DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/qdevice.pri \
@@ -243,9 +245,11 @@ DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf \
 		../Tank/Tank.pro ../Tank/tank.h \
-		../Tank/missile.h ../Tank/main.cpp \
+		../Tank/missile.h \
+		../Tank/attacker.h ../Tank/main.cpp \
 		../Tank/tank.cpp \
-		../Tank/missile.cpp
+		../Tank/missile.cpp \
+		../Tank/attacker.cpp
 QMAKE_TARGET  = Tank
 DESTDIR       = 
 TARGET        = Tank.app/Contents/MacOS/Tank
@@ -672,8 +676,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tank/tank.h ../Tank/missile.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp ../Tank/missile.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/tank.h ../Tank/missile.h ../Tank/attacker.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp ../Tank/missile.cpp ../Tank/attacker.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -712,6 +716,8 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/missile.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
@@ -763,9 +769,16 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o missile.o ../Tank/missile.cpp
+
+attacker.o: ../Tank/attacker.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o attacker.o ../Tank/attacker.cpp
 
 moc_missile.o: moc_missile.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_missile.o moc_missile.cpp

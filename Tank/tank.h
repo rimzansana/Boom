@@ -5,6 +5,7 @@
 
 class Tank: public QGraphicsRectItem{
 public:
+    Tank();
     void keyPressEvent(QKeyEvent *event);
 };
 
