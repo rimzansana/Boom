@@ -1,9 +1,4 @@
 #include "missile.h"
-#include <QTimer>
-#include <QList>
-
-
-
 
 Missile::Missile()
 {
@@ -27,11 +22,12 @@ Missile::Missile()
 void Missile::moveMissile()
 {
 
-    //Destroying Criteria
+    //Destroying the Attackers
     QList<QGraphicsItem *> collidingObjects = collidingItems();
     for(int i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Attacker)){
 
+            //Both the Missile and the attacker are removed and deleted.
             scene()->removeItem(collidingObjects[i]);
             scene()->removeItem(this);
 

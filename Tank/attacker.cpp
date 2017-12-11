@@ -1,14 +1,9 @@
 #include "attacker.h"
-#include <stdlib.h>
-#include <QTimer>
-#include <QDebug>
-#include <QGraphicsScene>
-#include "tank.h"
 
 Attacker::Attacker()
 {
     //setting the size
-    setRect(0,0,100,100);
+    setRect(0,0,90,90);
 
     //setting the position
     int randomPosition = rand() %500;
@@ -22,14 +17,13 @@ Attacker::Attacker()
 
 void Attacker::moveAttacker()
 {
-    //Removing the attcker when it hits the tank
+    //Removing the attacker when it hits the tank
     QList<QGraphicsItem *> collidingObjects = collidingItems();
     for(int i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
-
+            //Attacker is removed from the scene and deleted.
             scene()->removeItem(this);
-
 
             delete this;
             return;
@@ -38,7 +32,7 @@ void Attacker::moveAttacker()
 
     setPos(x()-5,y());
 
-   if(pos().x()<-100){
+   if(pos().x()<-90){
         scene()->removeItem(this);
         delete this;
         qDebug()<< "Enemy Removed";

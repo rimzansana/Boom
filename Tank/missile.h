@@ -4,6 +4,9 @@
 #include <QObject>
 #include <QGraphicsScene>
 #include "attacker.h"
+#include <QTimer>
+#include <QList>
+
 
 class Missile:public QObject, public QGraphicsRectItem{
     Q_OBJECT

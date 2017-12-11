@@ -1,7 +1,5 @@
 #include "tank.h"
-#include "missile.h"
-#include "attacker.h"
-#include <QGraphicsScene>
+
 
 
 Tank::Tank()

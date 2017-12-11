@@ -1,5 +1,8 @@
 #ifndef TANK_H
 #define TANK_H
+#include "missile.h"
+#include "attacker.h"
+#include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QKeyEvent>
 #include <QObject>
