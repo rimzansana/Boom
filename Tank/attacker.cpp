@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QDebug>
 #include <QGraphicsScene>
+#include "tank.h"
 
 Attacker::Attacker()
 {
@@ -22,6 +23,19 @@ Attacker::Attacker()
 void Attacker::moveAttacker()
 {
     //Removing the attcker when it hits the tank
+    QList<QGraphicsItem *> collidingObjects = collidingItems();
+    for(int i=0,n=collidingObjects.size(); i<n;++i){
+        if(typeid(*(collidingObjects[i]))==typeid(Tank)){
+
+
+            scene()->removeItem(this);
+
+
+            delete this;
+            return;
+        }
+    }
+
     setPos(x()-5,y());
 
    if(pos().x()<-100){
