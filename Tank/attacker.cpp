@@ -1,6 +1,8 @@
 #include "attacker.h"
 #include <stdlib.h>
 #include <QTimer>
+#include <QDebug>
+#include <QGraphicsScene>
 
 Attacker::Attacker()
 {
@@ -21,8 +23,10 @@ void Attacker::moveAttacker()
 {
     setPos(x()-5,y());
 
-   /* if(pos().x()>900){
+   if(pos().x()<-100){
         scene()->removeItem(this);
         delete this;
-   */
+        qDebug()<< "Enemy Removed";
+   }
+
 }
