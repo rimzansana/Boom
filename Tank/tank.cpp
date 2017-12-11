@@ -1,5 +1,6 @@
 #include "tank.h"
 #include "missile.h"
+#include "attacker.h"
 #include <QGraphicsScene>
 
 
@@ -58,4 +59,10 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
 
     }
+}
+
+void Tank::spawn()
+{
+    Attacker *huh = new Attacker();
+    scene()->addItem(huh);
 }

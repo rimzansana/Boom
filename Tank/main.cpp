@@ -2,6 +2,7 @@
 #include <QGraphicsScene>
 #include "tank.h"
 #include <QGraphicsView>
+#include <QTimer>
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,12 @@ int main(int argc, char *argv[])
     QGraphicsView *view = new QGraphicsView();
     view->setFixedSize(900,600);
     view->setScene(scene);
+
+    //create Enemy
+    QTimer *timer = new QTimer();
+    QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
+    timer->start(2000);
+
 
     //Displaying the View
     view->show();

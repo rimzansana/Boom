@@ -9,7 +9,7 @@ Attacker::Attacker()
 
     //setting the position
     int randomPosition = rand() %500;
-    setPos(0,randomPosition);
+    setPos(800,randomPosition);
 
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(moveAttacker()));
