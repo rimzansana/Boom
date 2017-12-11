@@ -1,5 +1,6 @@
 #include "missile.h"
 #include <QTimer>
+#include <QList>
 
 
 
@@ -25,6 +26,21 @@ Missile::Missile()
 
 void Missile::moveMissile()
 {
+
+    //Destroying Criteria
+    QList<QGraphicsItem *> collidingObjects = collidingItems();
+    for(int i=0,n=collidingObjects.size(); i<n;++i){
+        if(typeid(*(collidingObjects[i]))==typeid(Attacker)){
+
+            scene()->removeItem(collidingObjects[i]);
+            scene()->removeItem(this);
+
+            delete collidingObjects[i];
+            delete this;
+            return;
+        }
+    }
+
     setPos(x()+10,y());
 
     if(pos().x()>900){

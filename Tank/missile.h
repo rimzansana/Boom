@@ -3,6 +3,7 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QGraphicsScene>
+#include "attacker.h"
 
 class Missile:public QObject, public QGraphicsRectItem{
     Q_OBJECT

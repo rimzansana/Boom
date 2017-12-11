@@ -21,6 +21,7 @@ Attacker::Attacker()
 
 void Attacker::moveAttacker()
 {
+    //Removing the attcker when it hits the tank
     setPos(x()-5,y());
 
    if(pos().x()<-100){
