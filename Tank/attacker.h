@@ -11,7 +11,7 @@
 class Attacker:public QObject ,public QGraphicsRectItem{
     Q_OBJECT
 public:
-    Attacker();
+    Attacker(QGraphicsItem * parent=0);
 
 public slots:
     void moveAttacker();

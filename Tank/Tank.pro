@@ -28,10 +28,12 @@ SOURCES += \
     tank.cpp \
     missile.cpp \
     attacker.cpp \
-    game.cpp
+    game.cpp \
+    score.cpp
 
 HEADERS += \
     tank.h \
     missile.h \
     attacker.h \
-    game.h
+    game.h \
+    score.h

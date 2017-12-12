@@ -10,7 +10,7 @@
 class Tank: public QObject ,public QGraphicsRectItem{
     Q_OBJECT
 public:
-    Tank();
+    Tank(QGraphicsItem * parent=0);
     void keyPressEvent(QKeyEvent *event);
 
 public slots:

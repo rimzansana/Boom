@@ -1,6 +1,7 @@
 #include "game.h"
+#include "score.h"
 
-Game::Game()
+Game::Game(QWidget *parent)
 {
     //creating the Scene
 
@@ -27,6 +28,9 @@ Game::Game()
     QTimer *timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
     timer->start(2000);
+
+    score =  new Score();
+    scene->addItem(score);
 
 
     //Displaying the View

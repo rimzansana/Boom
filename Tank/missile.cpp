@@ -1,6 +1,9 @@
 #include "missile.h"
+#include <QDebug>
 
-Missile::Missile()
+extern Game *game;
+
+Missile::Missile(QGraphicsItem *parent):QObject(), QGraphicsRectItem(parent)
 {
 
     //Creating the Missile
@@ -30,6 +33,9 @@ void Missile::moveMissile()
             //Both the Missile and the attacker are removed and deleted.
             scene()->removeItem(collidingObjects[i]);
             scene()->removeItem(this);
+
+
+
 
             delete collidingObjects[i];
             delete this;

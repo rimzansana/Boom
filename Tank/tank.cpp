@@ -2,7 +2,7 @@
 
 
 
-Tank::Tank()
+Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent)
 {
     //Creating the tank
 

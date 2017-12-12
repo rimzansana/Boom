@@ -1,6 +1,6 @@
 #include "attacker.h"
 
-Attacker::Attacker()
+Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
 {
     //setting the size
     setRect(0,0,90,90);

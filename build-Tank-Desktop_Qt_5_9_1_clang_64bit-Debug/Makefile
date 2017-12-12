@@ -54,7 +54,8 @@ SOURCES       = ../Tank/main.cpp \
 		../Tank/tank.cpp \
 		../Tank/missile.cpp \
 		../Tank/attacker.cpp \
-		../Tank/game.cpp moc_tank.cpp \
+		../Tank/game.cpp \
+		../Tank/score.cpp moc_tank.cpp \
 		moc_missile.cpp \
 		moc_attacker.cpp
 OBJECTS       = main.o \
@@ -62,6 +63,7 @@ OBJECTS       = main.o \
 		missile.o \
 		attacker.o \
 		game.o \
+		score.o \
 		moc_tank.o \
 		moc_missile.o \
 		moc_attacker.o
@@ -253,11 +255,13 @@ DIST          = ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		../Tank/Tank.pro ../Tank/tank.h \
 		../Tank/missile.h \
 		../Tank/attacker.h \
-		../Tank/game.h ../Tank/main.cpp \
+		../Tank/game.h \
+		../Tank/score.h ../Tank/main.cpp \
 		../Tank/tank.cpp \
 		../Tank/missile.cpp \
 		../Tank/attacker.cpp \
-		../Tank/game.cpp
+		../Tank/game.cpp \
+		../Tank/score.cpp
 QMAKE_TARGET  = Tank
 DESTDIR       = 
 TARGET        = Tank.app/Contents/MacOS/Tank
@@ -684,8 +688,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tank/tank.h ../Tank/missile.h ../Tank/attacker.h ../Tank/game.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp ../Tank/missile.cpp ../Tank/attacker.cpp ../Tank/game.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/tank.h ../Tank/missile.h ../Tank/attacker.h ../Tank/game.h ../Tank/score.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp ../Tank/missile.cpp ../Tank/attacker.cpp ../Tank/game.cpp ../Tank/score.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -736,6 +740,13 @@ moc_tank.cpp: ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/tank.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
@@ -754,6 +765,13 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
@@ -777,6 +795,13 @@ moc_attacker.cpp: ../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../Tank/attacker.h \
 		moc_predefs.h \
@@ -802,8 +827,28 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		../Tank/game.h \
+		../Tank/tank.h \
+		../Tank/missile.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Tank/main.cpp
 
 tank.o: ../Tank/tank.cpp ../Tank/tank.h \
@@ -821,6 +866,13 @@ tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tank.o ../Tank/tank.cpp
 
@@ -839,7 +891,14 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o missile.o ../Tank/missile.cpp
 
 attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
@@ -855,22 +914,27 @@ attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../Tank/game.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o attacker.o ../Tank/attacker.cpp
 
 game.o: ../Tank/game.cpp ../Tank/game.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
@@ -878,8 +942,21 @@ game.o: ../Tank/game.cpp ../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../Tank/game.cpp
+
+score.o: ../Tank/score.cpp ../Tank/score.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QFont \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qfont.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o score.o ../Tank/score.cpp
 
 moc_tank.o: moc_tank.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tank.o moc_tank.cpp

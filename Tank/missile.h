@@ -6,12 +6,13 @@
 #include "attacker.h"
 #include <QTimer>
 #include <QList>
+#include "game.h"
 
 
 class Missile:public QObject, public QGraphicsRectItem{
     Q_OBJECT
 public:
-    Missile();
+    Missile(QGraphicsItem * parent=0);
 public slots:
     void moveMissile();
 
