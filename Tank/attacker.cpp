@@ -1,4 +1,5 @@
 #include "attacker.h"
+extern Game *game;
 
 Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
 {
@@ -22,6 +23,9 @@ void Attacker::moveAttacker()
     for(int i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
+            game->health->decreaseHealth();
+
+
             //Attacker is removed from the scene and deleted.
             scene()->removeItem(this);
 
@@ -33,6 +37,7 @@ void Attacker::moveAttacker()
     setPos(x()-5,y());
 
    if(pos().x()<-90){
+        game->health->decreaseHealth();
         scene()->removeItem(this);
         delete this;
         qDebug()<< "Enemy Removed";

@@ -9,6 +9,7 @@
 #include "game.h"
 
 
+
 class Missile:public QObject, public QGraphicsRectItem{
     Q_OBJECT
 public:

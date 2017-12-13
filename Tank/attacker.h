@@ -7,6 +7,8 @@
 #include <QTimer>
 #include <QDebug>
 #include <QGraphicsScene>
+#include "game.h"
+
 
 class Attacker:public QObject ,public QGraphicsRectItem{
     Q_OBJECT

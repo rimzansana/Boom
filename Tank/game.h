@@ -5,13 +5,14 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QTimer>
-#include "score.h"
+#include <playerstats.h>
 
 class Game: public QGraphicsView{
 public:
-    Game(QWidget * parent=0);
+    Game();
 
-    Score *score;
+    PlayerStats *stats;
+    PlayerStats *health;
 
 
 
