@@ -1,4 +1,5 @@
 #include "attacker.h"
+#include "typeinfo"
 extern Game *game;
 
 Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)

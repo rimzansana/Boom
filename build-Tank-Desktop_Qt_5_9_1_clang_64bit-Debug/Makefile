@@ -898,9 +898,7 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTypeInfo \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtypeinfo.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o missile.o ../Tank/missile.cpp
 
 attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \

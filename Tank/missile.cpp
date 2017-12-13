@@ -1,6 +1,6 @@
 #include "missile.h"
 #include <QDebug>
-#include <QTypeInfo>
+#include "typeinfo"
 
 extern Game *game;
 
