@@ -14,8 +14,10 @@ public:
 
     PlayerStats *stats;
     PlayerStats *health;
-   // HealthPack *pack;
     QTimer *timer;
+    QGraphicsScene *scene;
+    QGraphicsView *view;
+
 
 
 

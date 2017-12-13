@@ -5,7 +5,7 @@ Game::Game()
 {
     //creating the Scene
 
-    QGraphicsScene *scene = new QGraphicsScene();
+    scene = new QGraphicsScene();
 
     //Setting the Sceen Size
     scene->setSceneRect(0,0,900,600);
@@ -20,7 +20,7 @@ Game::Game()
     scene->addItem(tank);
 
     //Create a view
-    QGraphicsView *view = new QGraphicsView();
+    view = new QGraphicsView();
     view->setFixedSize(900,600);
     view->setScene(scene);
 
@@ -29,15 +29,15 @@ Game::Game()
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     //create Enemy
-    QTimer *timer = new QTimer();
+    timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
     timer->start(2000);
 
 
     //create Healthpack
-    QTimer *timer1 = new QTimer();
-    QObject::connect(timer1,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
-    timer1->start(5000);
+    timer = new QTimer();
+    QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
+    timer->start(5000);
 
     stats =  new PlayerStats();
     stats->Score();
