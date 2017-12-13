@@ -40,3 +40,8 @@ void PlayerStats::decreaseHealth()
 
 
 
+void PlayerStats::increaseHealth()
+{
+    health++;
+    setPlainText(QString("Health: ") + QString::number(health));
+}

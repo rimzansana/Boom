@@ -14,7 +14,8 @@ public:
 
     PlayerStats *stats;
     PlayerStats *health;
-    HealthPack *pack;
+   // HealthPack *pack;
+    QTimer *timer;
 
 
 

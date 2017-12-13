@@ -1,5 +1,5 @@
 #include "tank.h"
-
+#include "healthpack.h"
 
 
 Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent)
@@ -64,4 +64,10 @@ void Tank::spawn()
 {
     Attacker *huh = new Attacker();
     scene()->addItem(huh);
+}
+
+void Tank::spawnHealthPacks()
+{
+    HealthPack *pack = new HealthPack();
+    scene()->addItem(pack);
 }

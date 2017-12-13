@@ -33,6 +33,12 @@ Game::Game()
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
     timer->start(2000);
 
+
+    //create Healthpack
+    QTimer *timer1 = new QTimer();
+    QObject::connect(timer1,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
+    timer1->start(5000);
+
     stats =  new PlayerStats();
     stats->Score();
     scene->addItem(stats);
@@ -41,8 +47,7 @@ Game::Game()
     health->Health();
     scene->addItem(health);
 
-    pack = new HealthPack();
-    scene->addItem(pack);
+
 
     //Displaying the View
     view->show();

@@ -3,11 +3,14 @@
 #include <QGraphicsRectItem>
 #include <QTimer>
 #include <QObject>
+#include "game.h"
 
 class HealthPack:public QObject ,public QGraphicsRectItem{
     Q_OBJECT
   public:
-    HealthPack();
+    HealthPack(QGraphicsItem * parent=0);
+public slots:
+    void moveHealthPack();
 
 };
 

@@ -15,6 +15,7 @@ public:
 
 public slots:
     void spawn();
+    void spawnHealthPacks();
 };
 
 
