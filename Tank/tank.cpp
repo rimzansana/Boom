@@ -25,15 +25,16 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
         //Keeping the Tank on screen
         if(pos().y()>0)
-        setPos(x(),y()-10);
+        setPos(x(),y()-25);
 
     }
 
     else if (event->key()==Qt::Key_Down){
         //Keeping the Tank on screen
         if(pos().y()<500)
-        setPos(x(),y()+10);
+        setPos(x(),y()+25);
     }
+
 
     /* else if (event->key()==Qt::Key_Left){
          setPos(x()-10,y());

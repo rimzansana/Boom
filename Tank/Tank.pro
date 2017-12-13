@@ -29,11 +29,13 @@ SOURCES += \
     missile.cpp \
     attacker.cpp \
     game.cpp \
-    playerstats.cpp
+    playerstats.cpp \
+    healthpack.cpp
 
 HEADERS += \
     tank.h \
     missile.h \
     attacker.h \
     game.h \
-    playerstats.h
+    playerstats.h \
+    healthpack.h

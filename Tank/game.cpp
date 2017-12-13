@@ -24,6 +24,10 @@ Game::Game()
     view->setFixedSize(900,600);
     view->setScene(scene);
 
+    //removing the scroll bar
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     //create Enemy
     QTimer *timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
@@ -37,6 +41,8 @@ Game::Game()
     health->Health();
     scene->addItem(health);
 
+    pack = new HealthPack();
+    scene->addItem(pack);
 
     //Displaying the View
     view->show();

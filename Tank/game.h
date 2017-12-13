@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QTimer>
 #include <playerstats.h>
+#include <healthpack.h>
 
 class Game: public QGraphicsView{
 public:
@@ -13,6 +14,8 @@ public:
 
     PlayerStats *stats;
     PlayerStats *health;
+    HealthPack *pack;
+
 
 
 
