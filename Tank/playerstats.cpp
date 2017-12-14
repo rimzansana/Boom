@@ -1,6 +1,8 @@
 #include "playerstats.h"
 #include <QFont>
-
+#include <QMessageBox>
+#include "game.h"
+extern Game *game;
 
 void PlayerStats::Score()
 {
@@ -34,14 +36,27 @@ void PlayerStats::Health()
 
 void PlayerStats::decreaseHealth()
 {
-    health--;
+    if(health>0){
+    health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
+    }
 }
 
 
 
 void PlayerStats::increaseHealth()
 {
-    health++;
+    if(health<50){
+    health=health+10;
     setPlainText(QString("Health: ") + QString::number(health));
+    }
+}
+
+int PlayerStats::getHealth()
+{
+    if(health==0){
+        QMessageBox::information(game,"Game Over","Play Again",0);
+        game->timer->stop();
+    }
+    return health;
 }

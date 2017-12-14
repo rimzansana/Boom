@@ -1,5 +1,5 @@
 #include "game.h"
-
+#include <QDebug>
 
 Game::Game()
 {
@@ -28,6 +28,10 @@ Game::Game()
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+
+
+
+
     //create Enemy
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
@@ -38,6 +42,7 @@ Game::Game()
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
     timer->start(5000);
+
 
     stats =  new PlayerStats();
     stats->Score();

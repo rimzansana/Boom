@@ -9,11 +9,5 @@ int main(int argc, char *argv[])
     game = new Game();
 
 
-
-
-
-
-
-
     return a.exec();
 }

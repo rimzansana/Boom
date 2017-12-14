@@ -1,5 +1,8 @@
 #include "tank.h"
 #include "healthpack.h"
+#include "game.h"
+
+extern Game *game;
 
 
 Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent)
@@ -62,12 +65,16 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
 void Tank::spawn()
 {
+
+    if(game->health->getHealth()>0){
     Attacker *huh = new Attacker();
-    scene()->addItem(huh);
+    scene()->addItem(huh);}
 }
 
 void Tank::spawnHealthPacks()
 {
+    if(game->health->getHealth()>0){
     HealthPack *pack = new HealthPack();
     scene()->addItem(pack);
+    }
 }

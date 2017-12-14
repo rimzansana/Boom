@@ -9,6 +9,7 @@ public:
     void Health();
     void decreaseHealth();
     void increaseHealth();
+    int getHealth();
 
 private:
     int score;
