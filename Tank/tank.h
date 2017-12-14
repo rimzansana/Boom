@@ -13,6 +13,7 @@ public:
     Tank(QGraphicsItem * parent=0);
     void keyPressEvent(QKeyEvent *event);
 
+    qint32 overallHealth;
 public slots:
     void spawn();
     void spawnHealthPacks();

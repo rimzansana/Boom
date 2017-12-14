@@ -65,16 +65,17 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
 void Tank::spawn()
 {
-
-    if(game->health->getHealth()>0){
-    Attacker *huh = new Attacker();
-    scene()->addItem(huh);}
+    overallHealth = game->health->getHealth();
+    if(overallHealth>0){
+    Attacker *enemy = new Attacker();
+    scene()->addItem(enemy);}
 }
 
 void Tank::spawnHealthPacks()
 {
-    if(game->health->getHealth()>0){
+    if(overallHealth>0){
     HealthPack *pack = new HealthPack();
     scene()->addItem(pack);
     }
+
 }
