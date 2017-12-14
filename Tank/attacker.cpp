@@ -8,7 +8,7 @@ Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
     setRect(0,0,90,90);
 
     //setting the position
-    int randomPosition = rand() %500;
+    qint32 randomPosition = rand() %500;
     setPos(800,randomPosition);
 
     QTimer *timer = new QTimer();
@@ -21,7 +21,7 @@ void Attacker::moveAttacker()
 {
     //Removing the attacker when it hits the tank
     QList<QGraphicsItem *> collidingObjects = collidingItems();
-    for(int i=0,n=collidingObjects.size(); i<n;++i){
+    for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
             game->health->decreaseHealth();

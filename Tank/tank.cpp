@@ -14,8 +14,8 @@ Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent)
 
     //Positioning the tank
 
-    int xPos = 0;
-    int yPos =250;
+    qint32 xPos = 0;
+    qint32 yPos =250;
     setPos(xPos,yPos);
 
 }

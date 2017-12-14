@@ -10,7 +10,7 @@ HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsRectItem(pare
     //creating the healthpack
     setRect(0,0,50,50);
 
-    int p = rand() %500;
+    qint32 p = rand() %500;
     setPos(850,p);
 
     QTimer *timer = new QTimer();
@@ -23,7 +23,7 @@ void HealthPack::moveHealthPack()
 {
     //Removing the Health Pack when the tank Collects it
     QList<QGraphicsItem *> collidingObjects = collidingItems();
-    for(int i=0,n=collidingObjects.size(); i<n;++i){
+    for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
             game->health->increaseHealth();

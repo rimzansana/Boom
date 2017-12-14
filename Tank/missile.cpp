@@ -28,7 +28,7 @@ void Missile::moveMissile()
 
     //Destroying the Attackers
     QList<QGraphicsItem *> collidingObjects = collidingItems();
-    for(int i=0,n=collidingObjects.size(); i<n;++i){
+    for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Attacker)){
 
             game->stats->increaseScore();

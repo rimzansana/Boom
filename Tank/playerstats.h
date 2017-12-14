@@ -12,8 +12,8 @@ public:
     int getHealth();
 
 private:
-    int score;
-    int health;
+    qint32 score;
+    qint32 health;
 
 };
 

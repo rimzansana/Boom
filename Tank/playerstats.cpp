@@ -4,6 +4,7 @@
 #include "game.h"
 extern Game *game;
 
+
 void PlayerStats::Score()
 {
     //Setting the Initial score
@@ -54,9 +55,16 @@ void PlayerStats::increaseHealth()
 
 int PlayerStats::getHealth()
 {
+
     if(health==0){
-        QMessageBox::information(game,"Game Over","Play Again",0);
         game->timer->stop();
+        QMessageBox::information(game,"Game Over","Play Again");
+
+        delete game->view;
+
+
+
+
     }
-    return health;
+return health;
 }
