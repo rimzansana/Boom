@@ -14,13 +14,13 @@ void PlayerStats::Score()
     //Creating the Text item on the screen
     setPlainText(QString("Score: ") + QString::number(score));
     setDefaultTextColor(Qt::blue);
-    setFont(QFont("arial",18));
+    setFont(QFont("arial",16));
 
 }
 
 void PlayerStats::increaseScore()
 {
-    score++;
+    score= score+5;
     setPlainText(QString("Score: ") + QString::number(score));
 }
 
