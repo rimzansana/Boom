@@ -30,7 +30,7 @@ void PlayerStats::Health()
 
     //Creating the Text item on the Screen
     setPlainText(QString("Health: ") + QString::number(health));
-    setDefaultTextColor(Qt::blue);
+    setDefaultTextColor(Qt::darkGreen);
     setFont(QFont("arial",18));
     setPos(x()+100,y());
 }
@@ -40,6 +40,7 @@ void PlayerStats::decreaseHealth()
     if(health>0){
     health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
+
     }
 }
 
@@ -47,6 +48,7 @@ void PlayerStats::decreaseHealth()
 
 void PlayerStats::increaseHealth()
 {
+
     if(health<50){
     health=health+10;
     setPlainText(QString("Health: ") + QString::number(health));
@@ -56,15 +58,20 @@ void PlayerStats::increaseHealth()
 int PlayerStats::getHealth()
 {
 
-    if(health==0){
+    if(health<30){
+        setDefaultTextColor(Qt::red);
+    }
+    else if(health==30){
+        setDefaultTextColor(Qt::darkGreen);
+    }
+
+    else if(health==0){
         game->timer->stop();
         QMessageBox::information(game,"Game Over","Play Again");
-
-        delete game->view;
-
-
-
-
+        delete game->scene;
     }
+
+
+
 return health;
 }
