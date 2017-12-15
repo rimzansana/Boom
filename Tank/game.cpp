@@ -1,6 +1,6 @@
 #include "game.h"
 #include <QDebug>
-
+#include <QProgressBar>
 Game::Game()
 {
     //creating the Scene
@@ -39,6 +39,17 @@ Game::Game()
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
     timer->start(5000);
+
+    //add progress bar
+    QProgressBar *progress = new QProgressBar();
+    progress->setTextVisible(true);
+    progress->setRange(0,0);
+
+
+    progress->setFixedSize(100,200);
+
+
+    scene->addWidget(progress);
 
 
     stats =  new PlayerStats();

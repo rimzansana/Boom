@@ -8,6 +8,7 @@
 #include <playerstats.h>
 #include <healthpack.h>
 
+
 class Game: public QGraphicsView{
 public:
     Game();
