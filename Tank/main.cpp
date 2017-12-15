@@ -2,13 +2,16 @@
 #include "game.h"
 
 Game *game;
-
+bool restart=true;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    game = new Game();
 
+    while(restart==true){
+    game = new Game();
+    restart = false;
+    }
 
     return a.exec();
 }

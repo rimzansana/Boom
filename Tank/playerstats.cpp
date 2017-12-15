@@ -5,6 +5,7 @@
 extern Game *game;
 
 
+
 void PlayerStats::Score()
 {
     //Setting the Initial score
@@ -26,12 +27,12 @@ void PlayerStats::increaseScore()
 void PlayerStats::Health()
 {
     //setting the Initial Health
-    health = 50;
+    health = 100;
 
     //Creating the Text item on the Screen
     setPlainText(QString("Health: ") + QString::number(health));
     setDefaultTextColor(Qt::darkGreen);
-    setFont(QFont("arial",18));
+    setFont(QFont("arial",16));
     setPos(x()+100,y());
 }
 
@@ -40,7 +41,6 @@ void PlayerStats::decreaseHealth()
     if(health>0){
     health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
-
     }
 }
 
@@ -48,8 +48,7 @@ void PlayerStats::decreaseHealth()
 
 void PlayerStats::increaseHealth()
 {
-
-    if(health<50){
+    if(health<100){
     health=health+10;
     setPlainText(QString("Health: ") + QString::number(health));
     }
@@ -68,7 +67,8 @@ int PlayerStats::getHealth()
     else if(health==0){
         game->timer->stop();
         QMessageBox::information(game,"Game Over","Play Again");
-        delete game->scene;
+
+
     }
 
 

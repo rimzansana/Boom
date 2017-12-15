@@ -29,9 +29,6 @@ Game::Game()
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 
-
-
-
     //create Enemy
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
@@ -51,7 +48,6 @@ Game::Game()
     health = new PlayerStats();
     health->Health();
     scene->addItem(health);
-
 
 
     //Displaying the View
