@@ -7,18 +7,14 @@ extern Game *game;
 Missile::Missile(QGraphicsItem *parent):QObject(), QGraphicsRectItem(parent)
 {
 
-    //Creating the Missile
+    //Defining the size of the missile
 
     setRect(0,0,50,10);
 
-    //Creating the timer
+    //connecting the missile item to the move function
     QTimer *timer = new QTimer();
-
-    //Setting the timeout
-    timer->start(50);
-
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(moveMissile()));
-
+    timer->start(50);
 
 
 }
@@ -30,6 +26,7 @@ void Missile::moveMissile()
     QList<QGraphicsItem *> collidingObjects = collidingItems();
     for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Attacker)){
+
 
             game->stats->increaseScore();
 
@@ -44,8 +41,10 @@ void Missile::moveMissile()
         }
     }
 
+
     setPos(x()+10,y());
 
+    //The missile is removed when it moves out of the screeen
     if(pos().x()>900){
         scene()->removeItem(this);
         delete this;

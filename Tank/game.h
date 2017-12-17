@@ -7,17 +7,24 @@
 #include <QTimer>
 #include <playerstats.h>
 #include <healthpack.h>
+#include "attacker.h"
 
 
 class Game: public QGraphicsView{
 public:
     Game();
-
     PlayerStats *stats;
     PlayerStats *health;
     QTimer *timer;
     QGraphicsScene *scene;
     QGraphicsView *view;
+
+    void mousePressEvent(QMouseEvent * event);
+public slots:
+    void spawnAttacker();
+    void spawnHealthpcks();
+
+
 
 
 

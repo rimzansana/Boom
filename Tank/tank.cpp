@@ -1,7 +1,8 @@
 #include "tank.h"
 #include "healthpack.h"
 #include "game.h"
-
+#include <QMessageBox>
+#include <QDebug>
 extern Game *game;
 
 
@@ -65,17 +66,18 @@ void Tank::keyPressEvent(QKeyEvent *event)
 
 void Tank::spawn()
 {
-    overallHealth = game->health->getHealth();
-    if(overallHealth>0){
+   overallHealth = game->health->checkHealth();
+   if(overallHealth>0){
     Attacker *enemy = new Attacker();
     scene()->addItem(enemy);}
 }
 
 void Tank::spawnHealthPacks()
 {
-    if(overallHealth>0){
+
+    if(game->health->getHealth()>0){
+    qDebug() <<overallHealth;
     HealthPack *pack = new HealthPack();
     scene()->addItem(pack);
     }
-
 }

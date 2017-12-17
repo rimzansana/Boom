@@ -1,16 +1,17 @@
 #include "game.h"
+#include "tank.h"
 #include <QDebug>
-#include <QProgressBar>
+
 Game::Game()
 {
     //creating the Scene
-
+    this->setMouseTracking(true);
     scene = new QGraphicsScene();
 
-    //Setting the Sceen Size
+    //Defining the Sceen Size
     scene->setSceneRect(0,0,900,600);
 
-    Tank *tank = new Tank();
+    Tank * tank = new Tank();
 
     //making the tank focusable
     tank->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -29,33 +30,23 @@ Game::Game()
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 
-    //create Enemy
+    //Creating the attacker
     timer = new QTimer();
-    QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawn()));
+    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(spawnAttacker()));
     timer->start(2000);
 
 
-    //create Healthpack
+    //Creating the healthpack
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
     timer->start(5000);
 
-    //add progress bar
-    QProgressBar *progress = new QProgressBar();
-    progress->setTextVisible(true);
-    progress->setRange(0,0);
-
-
-    progress->setFixedSize(100,200);
-
-
-    scene->addWidget(progress);
-
-
+    //Creating and adding the score to the screen
     stats =  new PlayerStats();
     stats->Score();
     scene->addItem(stats);
 
+    //Creating and adding the Health to the screen
     health = new PlayerStats();
     health->Health();
     scene->addItem(health);
@@ -64,3 +55,35 @@ Game::Game()
     //Displaying the View
     view->show();
 }
+
+void Game::mousePressEvent(QMouseEvent *event)
+{
+    switch(event->button()){
+        case Qt::LeftButton: {
+            qDebug() << "mouse Left";
+            scene->tank->setFlag(QGraphicsItem::ItemIsFocusable);
+            break;
+        }
+        case Qt::MiddleButton: {
+            qDebug() << "mouse Middle";
+            break;
+        }
+        case Qt::RightButton: {
+            qDebug() << "mouse Right";
+             this->tank->setFlag(QGraphicsItem::ItemIsFocusable);
+            break;
+        }
+    }
+}
+
+void Game::spawnAttacker()
+{
+
+    if(health->checkHealth()>0){
+     Attacker *enemy = new Attacker();
+     scene->addItem(enemy);}
+}
+
+
+
+

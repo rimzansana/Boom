@@ -9,7 +9,9 @@ public:
     void Health();
     void decreaseHealth();
     void increaseHealth();
-    int getHealth();
+    qint32 checkHealth();
+    qint32 getHealth();
+
 
 private:
     qint32 score;

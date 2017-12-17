@@ -7,12 +7,14 @@ extern Game *game;
 
 HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
 {
-    //creating the healthpack
+    //Defining the size of the healthpack
     setRect(0,0,50,50);
 
+    //using the random function to generate positions for the healthpack
     qint32 p = rand() %500;
     setPos(850,p);
 
+    //connecting the healthpack item to the move function
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(moveHealthPack()));
     timer->start(50);
@@ -26,6 +28,7 @@ void HealthPack::moveHealthPack()
     for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
+            //increasing the health
             game->health->increaseHealth();
 
 
@@ -39,6 +42,7 @@ void HealthPack::moveHealthPack()
 
     setPos(x()-20,y());
 
+    //The healthpack item is removed when it moves out of the screeen
    if(pos().x()<-50){
         scene()->removeItem(this);
         delete this;
