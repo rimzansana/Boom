@@ -64,7 +64,7 @@ void Tank::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void Tank::spawn()
+void Tank::spawnAttacker()
 {
    overallHealth = game->health->checkHealth();
    if(overallHealth>0){

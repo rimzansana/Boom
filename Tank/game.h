@@ -19,10 +19,8 @@ public:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
-    void mousePressEvent(QMouseEvent * event);
-public slots:
-    void spawnAttacker();
-    void spawnHealthpcks();
+
+    //void mousePressEvent(QMouseEvent * event);
 
 
 

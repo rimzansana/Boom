@@ -2,7 +2,7 @@
 #include <QFont>
 #include <QMessageBox>
 #include "game.h"
-#include <QMessageBox>
+#include "typeinfo"
 #include <QDebug>
 extern Game *game;
 

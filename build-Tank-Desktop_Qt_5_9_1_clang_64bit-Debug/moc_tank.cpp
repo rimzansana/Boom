@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Tank_t {
     QByteArrayData data[4];
-    char stringdata0[29];
+    char stringdata0[37];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,12 +32,12 @@ struct qt_meta_stringdata_Tank_t {
 static const qt_meta_stringdata_Tank_t qt_meta_stringdata_Tank = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "Tank"
-QT_MOC_LITERAL(1, 5, 5), // "spawn"
-QT_MOC_LITERAL(2, 11, 0), // ""
-QT_MOC_LITERAL(3, 12, 16) // "spawnHealthPacks"
+QT_MOC_LITERAL(1, 5, 13), // "spawnAttacker"
+QT_MOC_LITERAL(2, 19, 0), // ""
+QT_MOC_LITERAL(3, 20, 16) // "spawnHealthPacks"
 
     },
-    "Tank\0spawn\0\0spawnHealthPacks"
+    "Tank\0spawnAttacker\0\0spawnHealthPacks"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +71,7 @@ void Tank::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         Tank *_t = static_cast<Tank *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->spawn(); break;
+        case 0: _t->spawnAttacker(); break;
         case 1: _t->spawnHealthPacks(); break;
         default: ;
         }

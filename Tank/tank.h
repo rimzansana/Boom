@@ -15,7 +15,7 @@ public:
 
     qint32 overallHealth;
 public slots:
-    void spawn();
+    void spawnAttacker();
     void spawnHealthPacks();
 };
 

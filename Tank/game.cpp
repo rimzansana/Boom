@@ -32,7 +32,7 @@ Game::Game()
 
     //Creating the attacker
     timer = new QTimer();
-    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(spawnAttacker()));
+    QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnAttacker()));
     timer->start(2000);
 
 
@@ -56,7 +56,8 @@ Game::Game()
     view->show();
 }
 
-void Game::mousePressEvent(QMouseEvent *event)
+
+/*void Game::mousePressEvent(QMouseEvent *event)
 {
     switch(event->button()){
         case Qt::LeftButton: {
@@ -76,14 +77,8 @@ void Game::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void Game::spawnAttacker()
-{
 
-    if(health->checkHealth()>0){
-     Attacker *enemy = new Attacker();
-     scene->addItem(enemy);}
-}
-
+*/
 
 
 
