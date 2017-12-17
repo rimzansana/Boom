@@ -3,11 +3,11 @@
 #include "missile.h"
 #include "attacker.h"
 #include <QGraphicsScene>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QObject>
 
-class Tank: public QObject ,public QGraphicsRectItem{
+class Tank: public QObject ,public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Tank(QGraphicsItem * parent=0);

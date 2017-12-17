@@ -1,15 +1,18 @@
 #include "missile.h"
 #include <QDebug>
 #include "typeinfo"
+#include <QMovie>
 
 extern Game *game;
 
-Missile::Missile(QGraphicsItem *parent):QObject(), QGraphicsRectItem(parent)
+Missile::Missile(QGraphicsItem *parent):QObject(),QGraphicsPixmapItem(parent)
 {
 
     //Defining the size of the missile
+   setPixmap(QPixmap(":/images/Missile.gif"));
 
-    setRect(0,0,50,10);
+
+
 
     //connecting the missile item to the move function
     QTimer *timer = new QTimer();

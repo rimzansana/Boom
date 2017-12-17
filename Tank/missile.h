@@ -1,6 +1,6 @@
 #ifndef MISSILE_H
 #define MISSILE_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsScene>
 #include "attacker.h"
@@ -10,7 +10,7 @@
 
 
 
-class Missile:public QObject, public QGraphicsRectItem{
+class Missile:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Missile(QGraphicsItem * parent=0);

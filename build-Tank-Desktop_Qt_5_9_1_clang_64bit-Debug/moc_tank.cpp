@@ -95,8 +95,8 @@ void *Tank::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_Tank.stringdata0))
         return static_cast<void*>(const_cast< Tank*>(this));
-    if (!strcmp(_clname, "QGraphicsRectItem"))
-        return static_cast< QGraphicsRectItem*>(const_cast< Tank*>(this));
+    if (!strcmp(_clname, "QGraphicsPixmapItem"))
+        return static_cast< QGraphicsPixmapItem*>(const_cast< Tank*>(this));
     return QObject::qt_metacast(_clname);
 }
 

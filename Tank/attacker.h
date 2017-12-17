@@ -1,7 +1,7 @@
 #ifndef ATTACKER_H
 #define ATTACKER_H
 #include "tank.h"
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <stdlib.h>
 #include <QTimer>
@@ -10,7 +10,7 @@
 #include "game.h"
 
 
-class Attacker:public QObject ,public QGraphicsRectItem{
+class Attacker:public QObject ,public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Attacker(QGraphicsItem * parent=0);

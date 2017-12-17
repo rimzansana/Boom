@@ -91,8 +91,8 @@ void *Missile::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_Missile.stringdata0))
         return static_cast<void*>(const_cast< Missile*>(this));
-    if (!strcmp(_clname, "QGraphicsRectItem"))
-        return static_cast< QGraphicsRectItem*>(const_cast< Missile*>(this));
+    if (!strcmp(_clname, "QGraphicsPixmapItem"))
+        return static_cast< QGraphicsPixmapItem*>(const_cast< Missile*>(this));
     return QObject::qt_metacast(_clname);
 }
 

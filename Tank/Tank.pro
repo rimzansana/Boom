@@ -39,3 +39,6 @@ HEADERS += \
     game.h \
     playerstats.h \
     healthpack.h
+
+RESOURCES += \
+    resource.qrc

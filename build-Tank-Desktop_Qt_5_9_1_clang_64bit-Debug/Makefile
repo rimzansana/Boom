@@ -56,7 +56,8 @@ SOURCES       = ../Tank/main.cpp \
 		../Tank/attacker.cpp \
 		../Tank/game.cpp \
 		../Tank/playerstats.cpp \
-		../Tank/healthpack.cpp moc_tank.cpp \
+		../Tank/healthpack.cpp qrc_resource.cpp \
+		moc_tank.cpp \
 		moc_missile.cpp \
 		moc_attacker.cpp \
 		moc_healthpack.cpp
@@ -67,6 +68,7 @@ OBJECTS       = main.o \
 		game.o \
 		playerstats.o \
 		healthpack.o \
+		qrc_resource.o \
 		moc_tank.o \
 		moc_missile.o \
 		moc_attacker.o \
@@ -471,6 +473,7 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf \
 		../Tank/Tank.pro \
+		../Tank/resource.qrc \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl
@@ -661,6 +664,7 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/yacc.prf:
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf:
 ../Tank/Tank.pro:
+../Tank/resource.qrc:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -693,6 +697,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Tank/resource.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Tank/tank.h ../Tank/missile.h ../Tank/attacker.h ../Tank/game.h ../Tank/playerstats.h ../Tank/healthpack.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Tank/main.cpp ../Tank/tank.cpp ../Tank/missile.cpp ../Tank/attacker.cpp ../Tank/game.cpp ../Tank/playerstats.cpp ../Tank/healthpack.cpp $(DISTDIR)/
@@ -719,8 +724,18 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resource.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resource.cpp
+qrc_resource.cpp: ../Tank/resource.qrc \
+		../../../../Qt5.9.1/5.9.1/clang_64/bin/rcc \
+		../Tank/Trump2.gif \
+		../Tank/Missile.gif \
+		../Tank/Trump1.gif \
+		../Tank/Tank.gif \
+		../Tank/Trump3.gif
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/rcc -name resource ../Tank/resource.qrc -o qrc_resource.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -731,7 +746,7 @@ compiler_moc_header_make_all: moc_tank.cpp moc_missile.cpp moc_attacker.cpp moc_
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_tank.cpp moc_missile.cpp moc_attacker.cpp moc_healthpack.cpp
 moc_tank.cpp: ../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -741,6 +756,7 @@ moc_tank.cpp: ../Tank/missile.h \
 		../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -759,7 +775,7 @@ moc_tank.cpp: ../Tank/missile.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
 	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/tank.h -o moc_tank.cpp
 
-moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -780,6 +796,7 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
@@ -790,13 +807,14 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 
 moc_attacker.cpp: ../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -826,6 +844,7 @@ moc_healthpack.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/H
 		../Tank/game.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
@@ -858,7 +877,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -867,13 +886,14 @@ main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framew
 		../Tank/game.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -892,13 +912,14 @@ main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framew
 
 tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -919,7 +940,7 @@ tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tank.o ../Tank/tank.cpp
 
 missile.o: ../Tank/missile.cpp ../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -929,6 +950,7 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -947,7 +969,7 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
@@ -965,6 +987,7 @@ attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
@@ -973,13 +996,14 @@ attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
 game.o: ../Tank/game.cpp ../Tank/game.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -1006,12 +1030,13 @@ playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \
 		../Tank/game.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -1036,6 +1061,7 @@ healthpack.o: ../Tank/healthpack.cpp ../Tank/healthpack.h \
 		../Tank/game.h \
 		../Tank/tank.h \
 		../Tank/missile.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
@@ -1051,6 +1077,9 @@ healthpack.o: ../Tank/healthpack.cpp ../Tank/healthpack.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o healthpack.o ../Tank/healthpack.cpp
+
+qrc_resource.o: qrc_resource.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resource.o qrc_resource.cpp
 
 moc_tank.o: moc_tank.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tank.o moc_tank.cpp

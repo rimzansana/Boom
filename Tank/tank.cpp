@@ -2,16 +2,16 @@
 #include "healthpack.h"
 #include "game.h"
 #include <QMessageBox>
+#include <QMovie>
+#include <QLabel>
 #include <QDebug>
 extern Game *game;
 
 
-Tank::Tank(QGraphicsItem *parent): QGraphicsRectItem(parent)
+Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 {
-    //Creating the tank
 
-
-    setRect(0,0,100,100);
+  setPixmap(QPixmap(":/images/Tank.gif").scaled(150,100,Qt::KeepAspectRatio));
 
     //Positioning the tank
 
@@ -57,7 +57,7 @@ void Tank::keyPressEvent(QKeyEvent *event)
         Missile *missile = new Missile();
 
        //setting the position of missile
-       missile->setPos(x()+70,y()+45);
+       missile->setPos(x()+70,y()+30);
        scene()->addItem(missile);
 
 

@@ -2,10 +2,10 @@
 #include "typeinfo"
 extern Game *game;
 
-Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
+Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     //setting the size of the attacker
-    setRect(0,0,90,90);
+    setPixmap(QPixmap(":/images/Trump3").scaled(90,90,Qt::KeepAspectRatio));
 
     //setting the position of the attacker
     qint32 randomPosition = rand() %500;
