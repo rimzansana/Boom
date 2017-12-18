@@ -6,4 +6,9 @@
         <file>Trump2.gif</file>
         <file>Trump3.gif</file>
     </qresource>
+    <qresource prefix="/soundsEffects">
+        <file>missilelaunch.mp3</file>
+        <file>explosion.mp3</file>
+        <file>collision.mp3</file>
+    </qresource>
 </RCC>

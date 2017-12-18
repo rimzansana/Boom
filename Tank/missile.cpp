@@ -11,13 +11,14 @@ Missile::Missile(QGraphicsItem *parent):QObject(),QGraphicsPixmapItem(parent)
     //Defining the size of the missile
    setPixmap(QPixmap(":/images/Missile.gif"));
 
-
-
-
     //connecting the missile item to the move function
     QTimer *timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(moveMissile()));
     timer->start(50);
+
+    //creating the QMediaPlayer
+    explosion = new QMediaPlayer();
+    explosion->setMedia(QUrl("qrc:/soundsEffects/explosion.mp3"));
 
 
 }
@@ -32,6 +33,7 @@ void Missile::moveMissile()
 
 
             game->stats->increaseScore();
+            explosion->play();
 
             //Both the Missile and the attacker are removed and deleted.
             scene()->removeItem(collidingObjects[i]);

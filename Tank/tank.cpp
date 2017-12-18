@@ -5,7 +5,9 @@
 #include <QMovie>
 #include <QLabel>
 #include <QDebug>
+#include <QMediaPlayer>
 extern Game *game;
+extern Missile *shoot;
 
 
 Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
@@ -18,6 +20,11 @@ Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
     qint32 xPos = 0;
     qint32 yPos =250;
     setPos(xPos,yPos);
+
+
+    missileLaunch = new QMediaPlayer();
+    missileLaunch->setMedia(QUrl("qrc:/soundsEffects/missilelaunch.mp3"));
+    missileLaunch->setVolume(50);
 
 }
 
@@ -59,6 +66,17 @@ void Tank::keyPressEvent(QKeyEvent *event)
        //setting the position of missile
        missile->setPos(x()+70,y()+30);
        scene()->addItem(missile);
+       qDebug() <<"its here";
+
+       // playing the Sound Effect
+       if (missileLaunch->state()==QMediaPlayer::PlayingState){
+           missileLaunch->setPosition(0);
+       }
+
+       else{
+           missileLaunch->play();
+       }
+
 
 
     }

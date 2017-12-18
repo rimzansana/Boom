@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../Tank -I. -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib
+INCPATH       = -I../Tank -I. -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib
 QMAKE         = /Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,7 +38,7 @@ DISTNAME      = Tank1.0.0
 DISTDIR = /Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/build-Tank-Desktop_Qt_5_9_1_clang_64bit-Debug/.tmp/Tank1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.10 -Wl,-rpath,@executable_path/Frameworks -Wl,-rpath,/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib -framework QtMultimedia -framework QtNetwork -framework QtCore -framework DiskArbitration -framework IOKit -framework QtGui -framework QtWidgets -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -474,8 +474,10 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 		../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf \
 		../Tank/Tank.pro \
 		../Tank/resource.qrc \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/QtMultimedia.prl \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/QtNetwork.prl \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl
 	$(QMAKE) -o Makefile ../Tank/Tank.pro -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/spec_pre.prf:
@@ -665,8 +667,10 @@ Makefile: ../Tank/Tank.pro ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang
 ../../../../Qt5.9.1/5.9.1/clang_64/mkspecs/features/lex.prf:
 ../Tank/Tank.pro:
 ../Tank/resource.qrc:
+../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/QtMultimedia.prl:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl:
+../../../../Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/QtNetwork.prl:
 ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../Tank/Tank.pro -spec macx-clang CONFIG+=debug CONFIG+=x86_64 CONFIG+=qml_debug
@@ -733,7 +737,10 @@ qrc_resource.cpp: ../Tank/resource.qrc \
 		../Tank/Missile.gif \
 		../Tank/Trump1.gif \
 		../Tank/Tank.gif \
-		../Tank/Trump3.gif
+		../Tank/Trump3.gif \
+		../Tank/missilelaunch.mp3 \
+		../Tank/collision.mp3 \
+		../Tank/explosion.mp3
 	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/rcc -name resource ../Tank/resource.qrc -o qrc_resource.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -756,7 +763,8 @@ moc_tank.cpp: ../Tank/missile.h \
 		../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -769,11 +777,12 @@ moc_tank.cpp: ../Tank/missile.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../Tank/tank.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
-	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/tank.h -o moc_tank.cpp
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/tank.h -o moc_tank.cpp
 
 moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
@@ -788,6 +797,8 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -803,7 +814,7 @@ moc_missile.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Head
 		../Tank/missile.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
-	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/missile.h -o moc_missile.cpp
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/missile.h -o moc_missile.cpp
 
 moc_attacker.cpp: ../Tank/tank.h \
 		../Tank/missile.h \
@@ -814,7 +825,6 @@ moc_attacker.cpp: ../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -827,13 +837,16 @@ moc_attacker.cpp: ../Tank/tank.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../Tank/attacker.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
-	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/attacker.h -o moc_attacker.cpp
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/attacker.h -o moc_attacker.cpp
 
 moc_healthpack.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
@@ -850,6 +863,8 @@ moc_healthpack.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/H
 		../Tank/attacker.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
@@ -863,7 +878,7 @@ moc_healthpack.cpp: ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/H
 		../Tank/healthpack.h \
 		moc_predefs.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/moc
-	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/healthpack.h -o moc_healthpack.cpp
+	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/mkspecs/macx-clang -I/Users/rimzansadikeen/Downloads/SOFT336SL-CW/Boom/Tank -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -F/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/lib ../Tank/healthpack.h -o moc_healthpack.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -893,11 +908,12 @@ main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framew
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
@@ -907,7 +923,8 @@ main.o: ../Tank/main.cpp ../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framew
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../Tank/healthpack.h
+		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Tank/main.cpp
 
 tank.o: ../Tank/tank.cpp ../Tank/tank.h \
@@ -919,7 +936,6 @@ tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -932,11 +948,18 @@ tank.o: ../Tank/tank.cpp ../Tank/tank.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QMovie \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qmovie.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tank.o ../Tank/tank.cpp
 
 missile.o: ../Tank/missile.cpp ../Tank/missile.h \
@@ -950,7 +973,8 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../Tank/tank.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
@@ -963,7 +987,10 @@ missile.o: ../Tank/missile.cpp ../Tank/missile.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../Tank/healthpack.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QMovie \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qmovie.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o missile.o ../Tank/missile.cpp
 
 attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
@@ -979,6 +1006,8 @@ attacker.o: ../Tank/attacker.cpp ../Tank/attacker.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1003,11 +1032,12 @@ game.o: ../Tank/game.cpp ../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
@@ -1017,7 +1047,8 @@ game.o: ../Tank/game.cpp ../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../Tank/healthpack.h
+		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../Tank/game.cpp
 
 playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \
@@ -1036,11 +1067,12 @@ playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../Tank/attacker.h \
-		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
@@ -1048,7 +1080,8 @@ playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../Tank/healthpack.h
+		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playerstats.o ../Tank/playerstats.cpp
 
 healthpack.o: ../Tank/healthpack.cpp ../Tank/healthpack.h \
@@ -1067,6 +1100,8 @@ healthpack.o: ../Tank/healthpack.cpp ../Tank/healthpack.h \
 		../Tank/attacker.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QList \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \

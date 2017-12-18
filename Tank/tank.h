@@ -6,12 +6,14 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QObject>
+#include <QMediaPlayer>
 
 class Tank: public QObject ,public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Tank(QGraphicsItem * parent=0);
     void keyPressEvent(QKeyEvent *event);
+    QMediaPlayer *missileLaunch;
 
     qint32 overallHealth;
 public slots:

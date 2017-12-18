@@ -79,7 +79,9 @@ qint32 PlayerStats::checkHealth()
           }
         qDebug() <<"Game reset";
          health = 100;
+         score= 0;
           setPlainText(QString("Health: ") + QString::number(health));
+
 
 
 
