@@ -47,16 +47,6 @@ void Tank::keyPressEvent(QKeyEvent *event)
     }
 
 
-    /* else if (event->key()==Qt::Key_Left){
-         setPos(x()-10,y());
-     }
-
-     else if (event->key()==Qt::Key_Right){
-         setPos(x()+10,y());
-     }
-
-     */
-
     else if (event->key()==Qt::Key_Space){
 
         //Creating a Missile if the Space is pressed

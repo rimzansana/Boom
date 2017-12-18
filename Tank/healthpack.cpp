@@ -18,6 +18,9 @@ HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsRectItem(pare
     QTimer *timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(moveHealthPack()));
     timer->start(50);
+
+    collection = new QMediaPlayer();
+    collection->setMedia(QUrl("qrc:/soundsEffects/collection.mp3"));
 }
 
 
@@ -31,6 +34,8 @@ void HealthPack::moveHealthPack()
             //increasing the health
             game->health->increaseHealth();
 
+            //playing the Soundeffect
+            collection->play();
 
             //Removing the Health Pack from the Screen
             scene()->removeItem(this);

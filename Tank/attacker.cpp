@@ -16,8 +16,10 @@ Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent
     connect(timer,SIGNAL(timeout()),this,SLOT(moveAttacker()));
     timer->start(50);
 
+    //Adding the Collision sound effects
     collision = new QMediaPlayer();
     collision->setMedia(QUrl("qrc:/soundsEffects/collision.mp3"));
+    collision->setVolume(60);
 
 
 }
@@ -29,7 +31,10 @@ void Attacker::moveAttacker()
     for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Tank)){
 
+            //decreasing the health
             game->health->decreaseHealth();
+
+            //PLaying SoundEffects
             collision->play();
 
             //Attacker is removed from the scene and deleted.

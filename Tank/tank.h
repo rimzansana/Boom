@@ -13,12 +13,14 @@ class Tank: public QObject ,public QGraphicsPixmapItem {
 public:
     Tank(QGraphicsItem * parent=0);
     void keyPressEvent(QKeyEvent *event);
-    QMediaPlayer *missileLaunch;
-
     qint32 overallHealth;
+
 public slots:
     void spawnAttacker();
     void spawnHealthPacks();
+
+private:
+    QMediaPlayer *missileLaunch;
 };
 
 

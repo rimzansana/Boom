@@ -15,10 +15,13 @@ class Attacker:public QObject ,public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Attacker(QGraphicsItem * parent=0);
-    QMediaPlayer *collision;
+
 
 public slots:
     void moveAttacker();
+private:
+    QMediaPlayer *collision;
+
 };
 
 

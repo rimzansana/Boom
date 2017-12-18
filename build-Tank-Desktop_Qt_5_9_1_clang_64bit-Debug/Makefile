@@ -740,6 +740,7 @@ qrc_resource.cpp: ../Tank/resource.qrc \
 		../Tank/Trump3.gif \
 		../Tank/missilelaunch.mp3 \
 		../Tank/collision.mp3 \
+		../Tank/collection.mp3 \
 		../Tank/explosion.mp3
 	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/rcc -name resource ../Tank/resource.qrc -o qrc_resource.cpp
 

@@ -15,10 +15,12 @@ class Missile:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Missile(QGraphicsItem * parent=0);
-    QMediaPlayer *explosion;
 
 public slots:
     void moveMissile();
+
+private:
+    QMediaPlayer *explosion;
 
 
 

@@ -31,8 +31,10 @@ void Missile::moveMissile()
     for(qint32 i=0,n=collidingObjects.size(); i<n;++i){
         if(typeid(*(collidingObjects[i]))==typeid(Attacker)){
 
-
+            //increasing the score
             game->stats->increaseScore();
+
+            //playing the soundeffect
             explosion->play();
 
             //Both the Missile and the attacker are removed and deleted.

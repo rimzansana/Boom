@@ -11,6 +11,7 @@
 
 
 
+
 class Game: public QGraphicsView{
 public:
     Game();
@@ -19,6 +20,7 @@ public:
     QTimer *timer;
     QGraphicsScene *scene;
     QGraphicsView *view;
+
 
 
 
