@@ -67,6 +67,33 @@ qint32 PlayerStats::checkHealth()
     }
 
     else if(health <= 0){
+
+
+
+        QMessageBox popUp;
+        popUp.setWindowTitle(" You failed to protect north korea");
+        popUp.setText("Do you want to try again?");
+        popUp.setStandardButtons(QMessageBox:: Yes | QMessageBox::Cancel);
+        popUp.setDefaultButton(QMessageBox::Yes);
+
+        switch (popUp.exec()){
+
+        case QMessageBox::Yes: {
+        health = 100;
+
+        setPlainText(QString("Health: ") + QString::number(health));
+
+        break;
+        }
+
+        case QMessageBox::Cancel: {
+        delete game->view;
+        delete game;
+        break;
+        }
+
+
+
         QMessageBox::information(game,"Game Over","Play Again",0);
          QList<QGraphicsItem *> itemsInScene = game->scene->items();
           for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
@@ -77,16 +104,10 @@ qint32 PlayerStats::checkHealth()
                   delete itemsInScene[i];
               }
           }
-        qDebug() <<"Game reset";
-         health = 100;
-         score= 0;
-          setPlainText(QString("Health: ") + QString::number(health));
-
-
-
 
     }
-    qDebug()<<health;
+
+    }
 
     return health;
 }
