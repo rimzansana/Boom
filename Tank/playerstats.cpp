@@ -79,6 +79,17 @@ qint32 PlayerStats::checkHealth()
         switch (popUp.exec()){
 
         case QMessageBox::Yes: {
+
+            QList<QGraphicsItem *> itemsInScene = game->scene->items();
+             for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
+                 if(typeid(*(itemsInScene[i]))==typeid(Attacker) || typeid(*(itemsInScene[i]))==typeid(HealthPack)){
+
+                     scene()->removeItem(itemsInScene[i]);
+
+                     delete itemsInScene[i];
+                 }
+             }
+
         health = 100;
 
         setPlainText(QString("Health: ") + QString::number(health));
@@ -94,16 +105,8 @@ qint32 PlayerStats::checkHealth()
 
 
 
-        QMessageBox::information(game,"Game Over","Play Again",0);
-         QList<QGraphicsItem *> itemsInScene = game->scene->items();
-          for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
-              if(typeid(*(itemsInScene[i]))==typeid(Attacker) || typeid(*(itemsInScene[i]))==typeid(HealthPack)){
 
-                  scene()->removeItem(itemsInScene[i]);
 
-                  delete itemsInScene[i];
-              }
-          }
 
     }
 

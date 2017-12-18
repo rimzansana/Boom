@@ -5,10 +5,10 @@
 #include "game.h"
 extern Game *game;
 
-HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent)
+HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     //Defining the size of the healthpack
-    setRect(0,0,50,50);
+    setPixmap(QPixmap(":/images/healthKit.png").scaled(50,50,Qt::KeepAspectRatio));
 
     //using the random function to generate positions for the healthpack
     qint32 p = rand() %500;
