@@ -738,6 +738,7 @@ qrc_resource.cpp: ../Tank/resource.qrc \
 		../Tank/Trump1.gif \
 		../Tank/healthKit.png \
 		../Tank/Tank.gif \
+		../Tank/background.jpg \
 		../Tank/Trump3.gif \
 		../Tank/missilelaunch.mp3 \
 		../Tank/collision.mp3 \
@@ -1041,7 +1042,11 @@ game.o: ../Tank/game.cpp ../Tank/game.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../Tank/healthpack.h
+		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QBrush \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/QImage \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtGui.framework/Headers/qimage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../Tank/game.cpp
 
 playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \

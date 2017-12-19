@@ -7,7 +7,6 @@
 #include <QTimer>
 #include <playerstats.h>
 #include <healthpack.h>
-#include "attacker.h"
 
 
 

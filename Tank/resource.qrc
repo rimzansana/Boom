@@ -6,6 +6,7 @@
         <file>Trump2.gif</file>
         <file>Trump3.gif</file>
         <file>healthKit.png</file>
+        <file>background.jpg</file>
     </qresource>
     <qresource prefix="/soundsEffects">
         <file>missilelaunch.mp3</file>

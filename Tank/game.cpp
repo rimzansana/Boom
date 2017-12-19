@@ -1,6 +1,9 @@
 #include "game.h"
 #include "tank.h"
 #include <QDebug>
+#include <QBrush>
+#include <QImage>
+
 
 Game::Game()
 {
@@ -10,6 +13,9 @@ Game::Game()
 
     //Defining the Sceen Size
     scene->setSceneRect(0,0,900,600);
+
+    //setting the background image
+    scene->setBackgroundBrush(QBrush(QImage(":/images/background.jpg").scaledToHeight(600,Qt::TransformationMode::FastTransformation).scaledToWidth(1080,Qt::TransformationMode::FastTransformation)));
 
     Tank * tank = new Tank();
 
