@@ -16,7 +16,7 @@ void PlayerStats::Score()
 
     //Creating the Text item on the screen
     setPlainText(QString("Score: ") + QString::number(score));
-    setDefaultTextColor(Qt::blue);
+    setDefaultTextColor(Qt::white);
     setFont(QFont("arial",16));
 
 }
@@ -42,7 +42,7 @@ void PlayerStats::Health()
 void PlayerStats::decreaseHealth()
 {
     if(health>0){
-    health =health-10;
+    health =health-20;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
@@ -52,7 +52,7 @@ void PlayerStats::decreaseHealth()
 void PlayerStats::increaseHealth()
 {
     if(health<100){
-    health=health+10;
+    health=health+20;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
