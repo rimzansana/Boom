@@ -4,6 +4,8 @@
 #include "game.h"
 #include "typeinfo"
 #include <QDebug>
+#include <QProcess>
+#include <QApplication>
 
 extern Game *game;
 
@@ -34,7 +36,7 @@ void PlayerStats::Health()
 
     //Creating the Text item on the Screen
     setPlainText(QString("Health: ") + QString::number(health));
-    setDefaultTextColor(Qt::darkGreen);
+    setDefaultTextColor(Qt::green);
     setFont(QFont("arial",16));
     setPos(x()+150,y());
 }
@@ -64,14 +66,14 @@ qint32 PlayerStats::checkHealth()
         setDefaultTextColor(Qt::red);
     }
     else if(health>=30){
-        setDefaultTextColor(Qt::darkGreen);
+        setDefaultTextColor(Qt::green);
     }
 
     else if(health <= 0){
 
 
 
-        QMessageBox popUp;
+       QMessageBox popUp;
         popUp.setWindowTitle(" You failed to protect north korea");
         popUp.setText("Do you want to try again?");
         popUp.setStandardButtons(QMessageBox:: Yes | QMessageBox::Cancel);
@@ -80,39 +82,20 @@ qint32 PlayerStats::checkHealth()
         switch (popUp.exec()){
 
         case QMessageBox::Yes: {
-        if(1){
 
-            QList<QGraphicsItem *> itemsInScene = game->scene->items();
-                         for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
-                             if(typeid(*(itemsInScene[i]))==typeid(Attacker) || typeid(*(itemsInScene[i]))==typeid(HealthPack)){
-
-                                 scene()->removeItem(itemsInScene[i]);
-
-                                 delete itemsInScene[i];
-                             }
-                         }
             delete game->view;
             delete game->scene;
             delete game;
-            if(1){
-            game = new Game();
-            return 0;}
-
+            QProcess::startDetached(qApp->arguments()[0],qApp->arguments());
+            break;
         }
 
-
-        break;
-        }
 
         case QMessageBox::Cancel: {
         delete game->view;
         delete game;
         break;
         }
-
-
-
-
 
 
     }
