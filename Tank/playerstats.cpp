@@ -44,7 +44,7 @@ void PlayerStats::Health()
 void PlayerStats::decreaseHealth()
 {
     if(health>0){
-    health =health-20;
+    health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
@@ -54,7 +54,7 @@ void PlayerStats::decreaseHealth()
 void PlayerStats::increaseHealth()
 {
     if(health<100){
-    health=health+20;
+    health=health+10;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
@@ -74,8 +74,8 @@ qint32 PlayerStats::checkHealth()
 
 
        QMessageBox popUp;
-        popUp.setWindowTitle(" You failed to protect north korea");
-        popUp.setText("Do you want to try again?");
+
+        popUp.setText("<h2>Game over </h2> <br><br> <h3>Do you want to play again?</h3>");
         popUp.setStandardButtons(QMessageBox:: Yes | QMessageBox::Cancel);
         popUp.setDefaultButton(QMessageBox::Yes);
 
@@ -83,17 +83,14 @@ qint32 PlayerStats::checkHealth()
 
         case QMessageBox::Yes: {
 
-            delete game->view;
-            delete game->scene;
-            delete game;
+            QApplication::quit();
             QProcess::startDetached(qApp->arguments()[0],qApp->arguments());
             break;
         }
 
 
         case QMessageBox::Cancel: {
-        delete game->view;
-        delete game;
+        QApplication::quit();
         break;
         }
 

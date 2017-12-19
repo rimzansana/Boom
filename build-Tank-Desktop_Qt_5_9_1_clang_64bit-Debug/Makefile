@@ -733,17 +733,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resource.cpp
 qrc_resource.cpp: ../Tank/resource.qrc \
 		../../../../Qt5.9.1/5.9.1/clang_64/bin/rcc \
-		../Tank/Trump2.gif \
+		../Tank/enemyTest.png \
 		../Tank/Missile.gif \
-		../Tank/Trump1.gif \
-		../Tank/healthKit.png \
 		../Tank/healthPack.png \
-		../Tank/Tank.gif \
 		../Tank/background.jpg \
-		../Tank/Trump3.gif \
 		../Tank/tankImage.png \
 		../Tank/missilelaunch.mp3 \
 		../Tank/collision.mp3 \
+		../Tank/backgroundSound.mp3 \
 		../Tank/collection.mp3 \
 		../Tank/explosion.mp3
 	/Users/rimzansadikeen/Qt5.9.1/5.9.1/clang_64/bin/rcc -name resource ../Tank/resource.qrc -o qrc_resource.cpp
@@ -1080,7 +1077,11 @@ playerstats.o: ../Tank/playerstats.cpp ../Tank/playerstats.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsView \
 		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../Tank/healthpack.h
+		../Tank/healthpack.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/QProcess \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtCore.framework/Headers/qprocess.h \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt5.9.1/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o playerstats.o ../Tank/playerstats.cpp
 
 healthpack.o: ../Tank/healthpack.cpp ../Tank/healthpack.h \

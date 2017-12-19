@@ -1,19 +1,16 @@
 <RCC>
     <qresource prefix="/images">
         <file>Missile.gif</file>
-        <file>Tank.gif</file>
-        <file>Trump1.gif</file>
-        <file>Trump2.gif</file>
-        <file>Trump3.gif</file>
-        <file>healthKit.png</file>
         <file>background.jpg</file>
         <file>tankImage.png</file>
         <file>healthPack.png</file>
+        <file>enemyTest.png</file>
     </qresource>
     <qresource prefix="/soundsEffects">
         <file>missilelaunch.mp3</file>
         <file>explosion.mp3</file>
         <file>collision.mp3</file>
         <file>collection.mp3</file>
+        <file>backgroundSound.mp3</file>
     </qresource>
 </RCC>

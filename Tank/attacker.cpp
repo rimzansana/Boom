@@ -5,7 +5,7 @@ extern Game *game;
 Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     //setting the size of the attacker
-    setPixmap(QPixmap(":/images/Trump3").scaled(90,90,Qt::KeepAspectRatio));
+    setPixmap(QPixmap(":/images/enemyTest.png").scaled(150,100,Qt::KeepAspectRatio));
 
     //setting the position of the attacker
     qint32 randomPosition = rand() %500;

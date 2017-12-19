@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <playerstats.h>
 #include <healthpack.h>
+#include <QMediaPlayer>
 
 
 
@@ -19,6 +20,7 @@ public:
     QTimer *timer;
     QGraphicsScene *scene;
     QGraphicsView *view;
+    QMediaPlayer *bgSound;
 
 
 

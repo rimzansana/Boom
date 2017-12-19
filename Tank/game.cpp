@@ -60,6 +60,17 @@ Game::Game()
 
     //Displaying the View
     view->show();
+
+    bgSound = new QMediaPlayer();
+    bgSound->setMedia(QUrl("qrc:/soundsEffects/backgroundSound.mp3"));
+    bgSound->setVolume(50);
+    bgSound->play();
+    if (bgSound->state()==QMediaPlayer::StoppedState){
+        bgSound->setPosition(0);
+        bgSound->play();
+    }
+
+
 }
 
 
