@@ -13,7 +13,7 @@ extern Missile *shoot;
 Tank::Tank(QGraphicsItem *parent): QGraphicsPixmapItem(parent)
 {
 
-  setPixmap(QPixmap(":/images/Tank.gif").scaled(150,100,Qt::KeepAspectRatio));
+  setPixmap(QPixmap(":/images/tankImage.png").scaled(150,100,Qt::KeepAspectRatio));
 
     //Positioning the tank
 
@@ -54,7 +54,7 @@ void Tank::keyPressEvent(QKeyEvent *event)
         Missile *missile = new Missile();
 
        //setting the position of missile
-       missile->setPos(x()+70,y()+30);
+       missile->setPos(x()+70,y()+10);
        scene()->addItem(missile);
        qDebug() <<"its here";
 

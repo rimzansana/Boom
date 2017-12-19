@@ -8,7 +8,7 @@ extern Game *game;
 HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
     //Defining the size of the healthpack
-    setPixmap(QPixmap(":/images/healthKit.png").scaled(50,50,Qt::KeepAspectRatio));
+    setPixmap(QPixmap(":/images/healthPack.png").scaled(50,50,Qt::KeepAspectRatio));
 
     //using the random function to generate positions for the healthpack
     qint32 p = rand() %500;
@@ -45,7 +45,7 @@ void HealthPack::moveHealthPack()
         }
     }
 
-    setPos(x()-20,y());
+    setPos(x()-10,y());
 
     //The healthpack item is removed when it moves out of the screeen
    if(pos().x()<-50){

@@ -737,9 +737,11 @@ qrc_resource.cpp: ../Tank/resource.qrc \
 		../Tank/Missile.gif \
 		../Tank/Trump1.gif \
 		../Tank/healthKit.png \
+		../Tank/healthPack.png \
 		../Tank/Tank.gif \
 		../Tank/background.jpg \
 		../Tank/Trump3.gif \
+		../Tank/tankImage.png \
 		../Tank/missilelaunch.mp3 \
 		../Tank/collision.mp3 \
 		../Tank/collection.mp3 \

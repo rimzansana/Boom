@@ -7,6 +7,8 @@
         <file>Trump3.gif</file>
         <file>healthKit.png</file>
         <file>background.jpg</file>
+        <file>tankImage.png</file>
+        <file>healthPack.png</file>
     </qresource>
     <qresource prefix="/soundsEffects">
         <file>missilelaunch.mp3</file>
