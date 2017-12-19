@@ -4,7 +4,7 @@ extern Game *game;
 
 Attacker::Attacker(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
-    //setting the size of the attacker
+    //setting the image of the attacker and sizing it
     setPixmap(QPixmap(":/images/enemyTest.png").scaled(150,100,Qt::KeepAspectRatio));
 
     //setting the position of the attacker

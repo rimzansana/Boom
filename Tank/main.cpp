@@ -3,7 +3,7 @@
 #include "missile.h"
 
 Game *game;
-Missile *shoot;
+
 
 
 int main(int argc, char *argv[])

@@ -7,7 +7,7 @@ extern Game *game;
 
 HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent)
 {
-    //Defining the size of the healthpack
+    //setting the image of the healthpack and sizing it
     setPixmap(QPixmap(":/images/healthPack.png").scaled(50,50,Qt::KeepAspectRatio));
 
     //using the random function to generate positions for the healthpack
@@ -19,6 +19,7 @@ HealthPack::HealthPack(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(pa
     connect(timer,SIGNAL(timeout()),this,SLOT(moveHealthPack()));
     timer->start(50);
 
+    //setting the Healthpack collection sound
     collection = new QMediaPlayer();
     collection->setMedia(QUrl("qrc:/soundsEffects/collection.mp3"));
 }

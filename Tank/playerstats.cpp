@@ -72,7 +72,7 @@ qint32 PlayerStats::checkHealth()
     else if(health <= 0){
 
 
-
+       //Defining the Message Box
        QMessageBox popUp;
 
         popUp.setText("<h2>Game over </h2> <br><br> <h3>Do you want to play again?</h3>");

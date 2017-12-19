@@ -61,6 +61,7 @@ Game::Game()
     //Displaying the View
     view->show();
 
+    //setting the background music
     bgSound = new QMediaPlayer();
     bgSound->setMedia(QUrl("qrc:/soundsEffects/backgroundMusic.mp3"));
     bgSound->setVolume(70);
@@ -70,29 +71,6 @@ Game::Game()
 
 }
 
-
-/*void Game::mousePressEvent(QMouseEvent *event)
-{
-    switch(event->button()){
-        case Qt::LeftButton: {
-            qDebug() << "mouse Left";
-            scene->tank->setFlag(QGraphicsItem::ItemIsFocusable);
-            break;
-        }
-        case Qt::MiddleButton: {
-            qDebug() << "mouse Middle";
-            break;
-        }
-        case Qt::RightButton: {
-            qDebug() << "mouse Right";
-             this->tank->setFlag(QGraphicsItem::ItemIsFocusable);
-            break;
-        }
-    }
-}
-
-
-*/
 
 
 

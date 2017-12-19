@@ -8,7 +8,7 @@ extern Game *game;
 Missile::Missile(QGraphicsItem *parent):QObject(),QGraphicsPixmapItem(parent)
 {
 
-    //Defining the size of the missile
+    //Setting the image of the missile
    setPixmap(QPixmap(":/images/Missile.gif"));
 
     //connecting the missile item to the move function
@@ -16,7 +16,7 @@ Missile::Missile(QGraphicsItem *parent):QObject(),QGraphicsPixmapItem(parent)
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(moveMissile()));
     timer->start(50);
 
-    //creating the QMediaPlayer
+    //setting the explosion sound
     explosion = new QMediaPlayer();
     explosion->setMedia(QUrl("qrc:/soundsEffects/explosion.mp3"));
 
@@ -34,7 +34,7 @@ void Missile::moveMissile()
             //increasing the score
             game->stats->increaseScore();
 
-            //playing the soundeffect
+            //playing the  explosion soundeffect
             explosion->play();
 
             //Both the Missile and the attacker are removed and deleted.

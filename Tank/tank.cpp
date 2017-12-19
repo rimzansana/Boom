@@ -72,6 +72,7 @@ void Tank::keyPressEvent(QKeyEvent *event)
     }
 }
 
+//spawning the attacker
 void Tank::spawnAttacker()
 {
    overallHealth = game->health->checkHealth();
@@ -80,6 +81,7 @@ void Tank::spawnAttacker()
     scene()->addItem(enemy);}
 }
 
+//spawning the healthpacks
 void Tank::spawnHealthPacks()
 {
 
