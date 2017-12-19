@@ -4,6 +4,7 @@
 #include "game.h"
 #include "typeinfo"
 #include <QDebug>
+
 extern Game *game;
 
 
@@ -41,7 +42,7 @@ void PlayerStats::Health()
 void PlayerStats::decreaseHealth()
 {
     if(health>0){
-    health =health-10;
+    health =health-50;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
@@ -79,20 +80,26 @@ qint32 PlayerStats::checkHealth()
         switch (popUp.exec()){
 
         case QMessageBox::Yes: {
+        if(1){
 
             QList<QGraphicsItem *> itemsInScene = game->scene->items();
-             for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
-                 if(typeid(*(itemsInScene[i]))==typeid(Attacker) || typeid(*(itemsInScene[i]))==typeid(HealthPack)){
+                         for(qint32 i=0,n=itemsInScene.size(); i<n;++i){
+                             if(typeid(*(itemsInScene[i]))==typeid(Attacker) || typeid(*(itemsInScene[i]))==typeid(HealthPack)){
 
-                     scene()->removeItem(itemsInScene[i]);
+                                 scene()->removeItem(itemsInScene[i]);
 
-                     delete itemsInScene[i];
-                 }
-             }
+                                 delete itemsInScene[i];
+                             }
+                         }
+            delete game->view;
+            delete game->scene;
+            delete game;
+            if (1){
+            game = new Game();
+            return 0;}
 
-        health = 100;
+        }
 
-        setPlainText(QString("Health: ") + QString::number(health));
 
         break;
         }
