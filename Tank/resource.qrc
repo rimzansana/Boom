@@ -11,6 +11,6 @@
         <file>explosion.mp3</file>
         <file>collision.mp3</file>
         <file>collection.mp3</file>
-        <file>backgroundSound.mp3</file>
+        <file>backgroundMusic.mp3</file>
     </qresource>
 </RCC>

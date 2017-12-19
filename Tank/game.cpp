@@ -15,7 +15,7 @@ Game::Game()
     scene->setSceneRect(0,0,900,600);
 
     //setting the background image
-    scene->setBackgroundBrush(QBrush(QImage(":/images/background.jpg").scaledToHeight(600,Qt::TransformationMode::FastTransformation).scaledToWidth(1080,Qt::TransformationMode::FastTransformation)));
+    scene->setBackgroundBrush(QBrush(QImage(":/images/background.jpg")));
 
     Tank * tank = new Tank();
 
@@ -62,13 +62,10 @@ Game::Game()
     view->show();
 
     bgSound = new QMediaPlayer();
-    bgSound->setMedia(QUrl("qrc:/soundsEffects/backgroundSound.mp3"));
-    bgSound->setVolume(50);
+    bgSound->setMedia(QUrl("qrc:/soundsEffects/backgroundMusic.mp3"));
+    bgSound->setVolume(70);
     bgSound->play();
-    if (bgSound->state()==QMediaPlayer::StoppedState){
-        bgSound->setPosition(0);
-        bgSound->play();
-    }
+
 
 
 }
