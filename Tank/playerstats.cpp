@@ -94,9 +94,8 @@ qint32 PlayerStats::checkHealth()
             delete game->view;
             delete game->scene;
             delete game;
-            if (1){
             game = new Game();
-            return 0;}
+            return 0;
 
         }
 
