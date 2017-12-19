@@ -42,7 +42,7 @@ void PlayerStats::Health()
 void PlayerStats::decreaseHealth()
 {
     if(health>0){
-    health =health-50;
+    health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }
