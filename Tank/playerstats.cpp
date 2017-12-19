@@ -35,13 +35,13 @@ void PlayerStats::Health()
     setPlainText(QString("Health: ") + QString::number(health));
     setDefaultTextColor(Qt::darkGreen);
     setFont(QFont("arial",16));
-    setPos(x()+100,y());
+    setPos(x()+150,y());
 }
 
 void PlayerStats::decreaseHealth()
 {
     if(health>0){
-    health =health-50;
+    health =health-10;
     setPlainText(QString("Health: ") + QString::number(health));
     }
 }

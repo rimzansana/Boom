@@ -39,7 +39,7 @@ Game::Game()
     //Creating the healthpack
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),tank,SLOT(spawnHealthPacks()));
-    timer->start(5000);
+    timer->start(15000);
 
     //Creating and adding the score to the screen
     stats =  new PlayerStats();
