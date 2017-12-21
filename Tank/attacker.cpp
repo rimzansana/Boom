@@ -49,10 +49,11 @@ void Attacker::moveAttacker()
 
 
    //The attacker item is removed when it moves out of the screeen
-   if(pos().x()<-90){
+   if(pos().x()<-150){
         game->health->decreaseHealth();
         scene()->removeItem(this);
         delete this;
+        qDebug() <<"attacker removed";
 
    }
 
