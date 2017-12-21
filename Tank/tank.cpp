@@ -56,7 +56,7 @@ void Tank::keyPressEvent(QKeyEvent *event)
        //setting the position of missile
        missile->setPos(x()+70,y()+10);
        scene()->addItem(missile);
-       qDebug() <<"its here";
+       qDebug() <<"Missile fires";
 
        // playing the Sound Effect
        if (missileLaunch->state()==QMediaPlayer::PlayingState){
@@ -86,7 +86,6 @@ void Tank::spawnHealthPacks()
 {
 
     if(game->health->getHealth()>0){
-    qDebug() <<overallHealth;
     HealthPack *pack = new HealthPack();
     scene()->addItem(pack);
     }

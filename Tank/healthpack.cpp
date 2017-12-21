@@ -52,7 +52,7 @@ void HealthPack::moveHealthPack()
    if(pos().x()<-50){
         scene()->removeItem(this);
         delete this;
-        qDebug()<< "Health Removed";
+        qDebug()<< "HealthPack Removed";
    }
 }
 

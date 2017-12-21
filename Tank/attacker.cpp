@@ -53,7 +53,7 @@ void Attacker::moveAttacker()
         game->health->decreaseHealth();
         scene()->removeItem(this);
         delete this;
-        qDebug()<< "Enemy Removed";
+
    }
 
 }

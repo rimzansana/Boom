@@ -25,7 +25,7 @@ public:
 
 
 
-    //void mousePressEvent(QMouseEvent * event);
+
 
 
 
